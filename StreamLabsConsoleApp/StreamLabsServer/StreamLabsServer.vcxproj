@@ -91,6 +91,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>C:\Users\IEUser\git-workspace\sl-assessment\StreamLabsConsoleApp\StreamLabsCommon\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,7 +152,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ServerUI.cpp" />
     <ClCompile Include="StreamLabsServer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StreamLabsServer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StreamLabsCommon\StreamLabsCommon.vcxproj">
+      <Project>{6ee5f544-400b-4f58-a990-2c2cfa0628f5}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

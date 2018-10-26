@@ -15,15 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
+    <ClInclude Include="include\CustomClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="StreamLabsConsoleApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\StreamLabsClient\pch.cpp">
+    <ClCompile Include="CustomClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

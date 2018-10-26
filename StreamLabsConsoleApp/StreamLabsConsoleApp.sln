@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StreamLabsConsoleApp", "StreamLabsConsoleApp\StreamLabsConsoleApp.vcxproj", "{02E42DC4-FC53-4A0C-9EDA-82424737BEF3}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StreamLabsServer", "StreamLabsServer\StreamLabsServer.vcxproj", "{46585A28-844C-41D6-B9E0-0B3ABB21F169}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StreamLabsClient", "StreamLabsClient\StreamLabsClient.vcxproj", "{C98AD85C-212E-4970-82B8-2B13D1B20C1F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StreamLabsCommon", "StreamLabsCommon\StreamLabsCommon.vcxproj", "{6EE5F544-400B-4F58-A990-2C2CFA0628F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +17,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{02E42DC4-FC53-4A0C-9EDA-82424737BEF3}.Debug|x64.ActiveCfg = Debug|x64
-		{02E42DC4-FC53-4A0C-9EDA-82424737BEF3}.Debug|x64.Build.0 = Debug|x64
-		{02E42DC4-FC53-4A0C-9EDA-82424737BEF3}.Debug|x86.ActiveCfg = Debug|Win32
-		{02E42DC4-FC53-4A0C-9EDA-82424737BEF3}.Debug|x86.Build.0 = Debug|Win32
-		{02E42DC4-FC53-4A0C-9EDA-82424737BEF3}.Release|x64.ActiveCfg = Release|x64
-		{02E42DC4-FC53-4A0C-9EDA-82424737BEF3}.Release|x64.Build.0 = Release|x64
-		{02E42DC4-FC53-4A0C-9EDA-82424737BEF3}.Release|x86.ActiveCfg = Release|Win32
-		{02E42DC4-FC53-4A0C-9EDA-82424737BEF3}.Release|x86.Build.0 = Release|Win32
 		{46585A28-844C-41D6-B9E0-0B3ABB21F169}.Debug|x64.ActiveCfg = Debug|x64
 		{46585A28-844C-41D6-B9E0-0B3ABB21F169}.Debug|x64.Build.0 = Debug|x64
 		{46585A28-844C-41D6-B9E0-0B3ABB21F169}.Debug|x86.ActiveCfg = Debug|Win32
@@ -41,6 +33,14 @@ Global
 		{C98AD85C-212E-4970-82B8-2B13D1B20C1F}.Release|x64.Build.0 = Release|x64
 		{C98AD85C-212E-4970-82B8-2B13D1B20C1F}.Release|x86.ActiveCfg = Release|Win32
 		{C98AD85C-212E-4970-82B8-2B13D1B20C1F}.Release|x86.Build.0 = Release|Win32
+		{6EE5F544-400B-4F58-A990-2C2CFA0628F5}.Debug|x64.ActiveCfg = Debug|x64
+		{6EE5F544-400B-4F58-A990-2C2CFA0628F5}.Debug|x64.Build.0 = Debug|x64
+		{6EE5F544-400B-4F58-A990-2C2CFA0628F5}.Debug|x86.ActiveCfg = Debug|Win32
+		{6EE5F544-400B-4F58-A990-2C2CFA0628F5}.Debug|x86.Build.0 = Debug|Win32
+		{6EE5F544-400B-4F58-A990-2C2CFA0628F5}.Release|x64.ActiveCfg = Release|x64
+		{6EE5F544-400B-4F58-A990-2C2CFA0628F5}.Release|x64.Build.0 = Release|x64
+		{6EE5F544-400B-4F58-A990-2C2CFA0628F5}.Release|x86.ActiveCfg = Release|Win32
+		{6EE5F544-400B-4F58-A990-2C2CFA0628F5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
