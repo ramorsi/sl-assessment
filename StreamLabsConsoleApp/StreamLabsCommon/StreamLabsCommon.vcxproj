@@ -152,10 +152,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\CustomClass.h" />
+    <ClInclude Include="include\Constants.h" />
+    <ClInclude Include="include\DummyClass.h" />
+    <ClInclude Include="include\Request.h" />
+    <ClInclude Include="include\Response.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CustomClass.cpp" />
+    <ClCompile Include="DummyClass.cpp" />
+    <ClCompile Include="Request.cpp" />
+    <ClCompile Include="Response.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

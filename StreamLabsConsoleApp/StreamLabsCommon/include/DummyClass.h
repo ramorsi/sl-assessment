@@ -1,13 +1,16 @@
-#ifdef CUSTOMCLASS_EXPORTS  
-#define CUSTOMCLASS_API __declspec(dllexport)   
+#ifdef DUMMYCLASS_EXPORTS  
+#define DUMMMYCLASS_API __declspec(dllexport)   
 #else  
-#define CUSTOMCLASS_API __declspec(dllimport)   
+#define DUMMYCLASS_API __declspec(dllimport)   
 #endif 
-
+#pragma once
 #include <string>
+#include "Constants.h"
+#include "nlohmann/json.hpp"
+using json = nlohmann::json;
 using namespace std;
 
-class  __declspec(dllexport) CustomClass
+class  __declspec(dllexport) DummyClass
 {
 private:
 	int a;
@@ -15,8 +18,8 @@ private:
 	string str;
 	static int counter;
 public:
-	CustomClass();
-	~CustomClass();
+	DummyClass();
+	~DummyClass();
 	void IncrementInteger();
 	void DecrementInteger();
 	int GetInteger();
@@ -25,6 +28,7 @@ public:
 	void ReverseString();
 	string GetString();
 	void SetString(string newString);
+	string ToString();
 
 };
 
