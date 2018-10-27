@@ -12,24 +12,23 @@ using namespace std;
 
 class  __declspec(dllexport) DummyClass
 {
-private:
+public:
+
 	int a;
 	int id;
 	string str;
 	static int counter;
-public:
-	DummyClass();
-	~DummyClass();
-	int GetId();
-	void IncrementInteger();
-	void DecrementInteger();
-	int GetInteger();
-	void SetInteger(int newValue);
+	
+	virtual int GetId() = 0;
+	virtual void IncrementInteger() = 0;
+	virtual void DecrementInteger() = 0;
+	virtual int GetInteger() = 0;
+	virtual void SetInteger(int newValue) = 0;
 
-	void ReverseString();
-	string GetString();
-	void SetString(string newString);
-	string ToString();
+	virtual void ReverseString() = 0;
+	virtual string GetString() = 0;
+	virtual void SetString(string newString) = 0;
+	virtual string ToString() = 0;
 
 };
 

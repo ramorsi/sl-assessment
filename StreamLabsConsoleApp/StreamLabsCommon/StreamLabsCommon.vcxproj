@@ -158,7 +158,6 @@
     <ClInclude Include="include\Response.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DummyClass.cpp" />
     <ClCompile Include="Request.cpp" />
     <ClCompile Include="Response.cpp" />
   </ItemGroup>

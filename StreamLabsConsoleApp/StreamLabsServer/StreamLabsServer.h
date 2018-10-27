@@ -11,6 +11,7 @@
 #include "Constants.h"
 #include "Request.h"
 #include "Response.h"
+#include "DummyClassServerImpl.h"
 
 //TODO check automatic variable
 using json = nlohmann::json;

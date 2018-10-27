@@ -1,13 +1,17 @@
+#ifdef STREAMLABSCLIENT_EXPORTS  
+#define STREAMLABSCLIENT_API __declspec(dllexport)   
+#else  
+#define STREAMLABSCLIENT_API __declspec(dllimport)   
+#endif 
 #pragma once
 #include <windows.h> 
 #include <stdio.h>
 #include <conio.h>
 #include <tchar.h>
-#include "ServerAccess.h"
-
+#include <string>
 using namespace std;
 #define BUFSIZE 512
-class StreamLabsClient
+class __declspec(dllexport) StreamLabsClient
 {
 	static StreamLabsClient* instance;
 	StreamLabsClient();
@@ -25,7 +29,7 @@ public:
 	int SendRequest(string lpvMessage);
 	int ReceiveReply();
 
-	void IncrementInteger(int objId);
+/*	void IncrementInteger(int objId);
 	void DecrementInteger(int objId);
 	int GetInteger(int objId);
 	void SetInteger(int objId, int newValue);
@@ -36,6 +40,6 @@ public:
 	json GetObj(int id);
 	int CreateObj();
 		
-
+		*/
 	~StreamLabsClient();
 };

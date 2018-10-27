@@ -152,10 +152,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DummyClassServerImpl.cpp" />
     <ClCompile Include="ServerUI.cpp" />
     <ClCompile Include="StreamLabsServer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DummyClassServerImpl.h" />
     <ClInclude Include="StreamLabsServer.h" />
   </ItemGroup>
   <ItemGroup>

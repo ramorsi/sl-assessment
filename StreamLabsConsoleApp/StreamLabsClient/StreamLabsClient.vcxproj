@@ -153,9 +153,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ClientUI.cpp" />
+    <ClCompile Include="DummyClassClientImpl.cpp" />
     <ClCompile Include="StreamLabsClient.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DummyClassClientImpl.h" />
     <ClInclude Include="StreamLabsClient.h" />
   </ItemGroup>
   <ItemGroup>
