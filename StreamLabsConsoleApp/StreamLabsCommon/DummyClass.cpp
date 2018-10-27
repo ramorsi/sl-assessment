@@ -1,5 +1,5 @@
 #include "DummyClass.h"
-
+//TODO remove this implementation, move it to server side and change DummyClass to an interface!
 int DummyClass::counter = 0;
 
 DummyClass::DummyClass()
@@ -10,6 +10,11 @@ DummyClass::DummyClass()
 //TODO add constructors using int, int and string, string
 DummyClass::~DummyClass()
 {
+}
+
+int DummyClass::GetId()
+{
+	return id;
 }
 
 void DummyClass::IncrementInteger()

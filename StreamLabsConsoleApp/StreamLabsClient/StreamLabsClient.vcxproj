@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ClientUI.cpp" />
     <ClCompile Include="StreamLabsClient.cpp" />
   </ItemGroup>
   <ItemGroup>

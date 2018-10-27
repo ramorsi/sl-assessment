@@ -13,6 +13,6 @@ using namespace std;
 int _tmain(VOID)
 {
 	StreamLabsServer* server = StreamLabsServer::GetInstance();
-	server->initServer();
+	server->StartServer();
 	return 0;
 }

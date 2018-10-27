@@ -12,13 +12,14 @@
 #include "Request.h"
 #include "Response.h"
 
+//TODO check automatic variable
 using json = nlohmann::json;
 using namespace std;
 
 class StreamLabsServer {
 	static StreamLabsServer* instance;
 	StreamLabsServer();
-	//~StreamLabsServer();
+	~StreamLabsServer();
 private:
 	map<int, DummyClass*> customObjects;
 public:
@@ -27,7 +28,8 @@ public:
 			instance = new StreamLabsServer;
 		return instance;
 	}
-	int initServer();
+	int StartServer();
+	DummyClass* GetObj(int id);
 	Response* CreateDummyObjectHandler();
 	Response* DecrementIntegerHandler(json requestArgs);
 	Response* GetIntegerHandler(json requestArgs);

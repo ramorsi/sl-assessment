@@ -20,6 +20,7 @@ private:
 public:
 	DummyClass();
 	~DummyClass();
+	int GetId();
 	void IncrementInteger();
 	void DecrementInteger();
 	int GetInteger();
