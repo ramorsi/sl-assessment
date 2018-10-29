@@ -18,6 +18,8 @@ public:
 	string GetString();
 	void SetString(string newString);
 	string ToString() = 0;
+	
+	static int CreateObj();
 
 //	json GetObj();
 

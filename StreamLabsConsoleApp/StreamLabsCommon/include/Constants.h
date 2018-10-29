@@ -1,5 +1,6 @@
 #pragma once
 #define ACTION "action"
+#define DATA "data"
 #define ID "id"
 #define INTEGER "integer"
 #define OBJ_ID "obj_id"

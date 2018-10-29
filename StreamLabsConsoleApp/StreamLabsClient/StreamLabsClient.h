@@ -9,6 +9,10 @@
 #include <conio.h>
 #include <tchar.h>
 #include <string>
+
+#include "nlohmann/json.hpp"
+#include "Request.h"
+using json = nlohmann::json;
 using namespace std;
 #define BUFSIZE 512
 class __declspec(dllexport) StreamLabsClient
@@ -26,8 +30,11 @@ public:
 		return instance;
 	}
 	int ConnectPipe();
-	int SendRequest(string lpvMessage);
+	int SendRequest(Request* request);
 	int ReceiveReply();
+	string SendSimpleData(string data);
+
+
 
 /*	void IncrementInteger(int objId);
 	void DecrementInteger(int objId);
@@ -38,7 +45,6 @@ public:
 	string GetString(int objId);
 	void SetString(int objId, string newString);
 	json GetObj(int id);
-	int CreateObj();
 		
 		*/
 	~StreamLabsClient();

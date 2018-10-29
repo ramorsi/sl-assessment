@@ -6,37 +6,18 @@
 #include "StreamLabsClient.h"
 #include "Request.h"
 
-
-int _tmain(int argc, TCHAR *argv[])
+void SendSimpleDataHandler()
 {
+	cout << "Please enter the text you would like to send" << endl;
+	string input;
+	cin >> input;
+	string result = StreamLabsClient::GetInstance()->SendSimpleData(input);
+	cout << result << endl;
 }
-/*
-	StreamLabsClient::GetInstance()->ConnectPipe();
-
-	do
-	{
-		int primaryAction;
-		cout << "Please select desired action (1: Create new object, 2: Execute function on particular instance, 3: Retrieve an instance" << endl;
-		cin >> primaryAction;
-		switch (primaryAction)
-		{
-		case 1: CreateObjectHandler(); break;
-		case 2: CarryOutFunctionHandler(); break;
-		case 3: GetObjectHandler(); break;
-		}
-	} while (cin.getline() != "exit");
-
-	return 0;
-	_getch();
-	delete StreamLabsClient::GetInstance();
-
-	return 0;
-}
-
 void CreateObjectHandler()
 {
-	int id = StreamLabsClient::GetInstance()->CreateObj();
-	cout << "A new object has been created with the id: " << id << endl;
+	//int id = DummyclassClient->CreateObj();
+	//cout << "A new object has been created with the id: " << id << endl;
 }
 void CarryOutFunctionHandler()
 {
@@ -58,6 +39,7 @@ void CarryOutFunctionHandler()
 	cin >> secondaryAction;
 	switch (secondaryAction)
 	{
+		/*
 	case Action::GET_INTEGER: GetIntegerHandler(); break;
 	case  Action::SET_INTEGER: SetIntegerHandler(); break;
 	case Action::INCREMENT_INTEGER:IncrementIntegerHandler(); break;
@@ -65,10 +47,37 @@ void CarryOutFunctionHandler()
 	case  Action::GET_STRING: GetStringHandler(); break;
 	case  Action::SET_STRING:SetStringHandler(); break;
 			case Action::REVERSE_STRING << ": reverse string, "
-
+			*/
 	}
-	
+
 }
 void GetObjectHandler()
 {}
-*/
+
+int _tmain(int argc, TCHAR *argv[])
+{
+	StreamLabsClient::GetInstance()->ConnectPipe();
+
+	while(true)
+	{
+		string primaryActionStr;
+		//TODO refactor this and set as enums
+		cout << "Please select an action (1: Send simple data, 2: Create a new object, 3: Execute function on particular instance, 4: Retrieve an instance)" << endl;
+		cin >> primaryActionStr;
+		if (primaryActionStr == "q")
+			break;
+		int primaryAction = atoi(primaryActionStr.c_str());
+		switch (primaryAction)
+		{
+		case 1: SendSimpleDataHandler(); break; //TODO Echo function
+		case 2: CreateObjectHandler(); break;
+		case 3: CarryOutFunctionHandler(); break;
+		case 4: GetObjectHandler(); break;
+		}
+	} 
+	_getch();
+	delete StreamLabsClient::GetInstance();
+
+	return 0;
+}
+

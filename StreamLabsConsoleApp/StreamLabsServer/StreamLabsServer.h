@@ -40,6 +40,7 @@ public:
 	Response* SetIntegerHandler(json requestArgs); 
 	Response* SetStringHandler(json requestArgs); 
 	Response* GetObjHandler(json requestArgs);
+	Response* EchoHandler(json requestArgs);
 
 
 	static DWORD WINAPI InstanceThread(LPVOID lpvParam);
