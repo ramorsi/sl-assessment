@@ -12,6 +12,8 @@
 
 #include "nlohmann/json.hpp"
 #include "Request.h"
+#include "Response.h"
+#include "DummyClassClientImpl.h"
 using json = nlohmann::json;
 using namespace std;
 #define BUFSIZE 512
@@ -30,10 +32,12 @@ public:
 		return instance;
 	}
 	int ConnectPipe();
+	//TODO change all pointers to dyn obj
 	int SendRequest(Request* request);
-	int ReceiveReply();
+	Response* ReceiveReply();
 	string SendSimpleData(string data);
-
+	//TODO change this to use class name and then map to object
+	int CreateObj(int objCode=0);
 
 
 /*	void IncrementInteger(int objId);

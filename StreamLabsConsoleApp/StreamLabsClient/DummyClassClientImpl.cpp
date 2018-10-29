@@ -106,9 +106,11 @@ int DummyClassClientImpl::CreateObj()
 	Request* request = new Request(Action::CREATE_DUMMY_OBJECT);
 	StreamLabsClient::GetInstance()->SendRequest(request);
 	//TODO refactor this, reply should be accessible here
-	StreamLabsClient::GetInstance()->ReceiveReply();
+	Response* response = StreamLabsClient::GetInstance()->ReceiveReply();
+	json responseData = json::parse(response->GetResponseData());
+	int id = responseData[OBJ_ID];
 	delete request;
-	return 0;
+	return id;
 }
 
 

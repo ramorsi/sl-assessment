@@ -22,6 +22,8 @@ private:
 public:
 	Response(StatusCode statusCode);
 	Response(StatusCode statusCode, string responseStr);
+	Response(string json);
 	~Response();
+	string GetResponseData();
 	string ToString();
 };

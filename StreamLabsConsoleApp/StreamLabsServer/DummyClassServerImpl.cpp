@@ -56,6 +56,6 @@ string DummyClassServerImpl::ToString()
 	json dummyJson;
 	dummyJson[INTEGER] = this->a;
 	dummyJson[STRING] = this->str;
-	dummyJson[ID] = this->id;
-	return string();
+	dummyJson[OBJ_ID] = this->id;
+	return dummyJson.dump();
 }

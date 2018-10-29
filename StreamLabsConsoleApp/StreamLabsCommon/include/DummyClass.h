@@ -14,7 +14,7 @@ class  __declspec(dllexport) DummyClass
 {
 public:
 
-	int a;
+	int a = 0;
 	int id;
 	string str;
 	static int counter;

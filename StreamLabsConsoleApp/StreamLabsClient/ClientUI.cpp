@@ -16,8 +16,8 @@ void SendSimpleDataHandler()
 }
 void CreateObjectHandler()
 {
-	//int id = DummyclassClient->CreateObj();
-	//cout << "A new object has been created with the id: " << id << endl;
+	int id = StreamLabsClient::GetInstance()->CreateObj();
+	cout << "A new object has been created with the id: " << id << endl;
 }
 void CarryOutFunctionHandler()
 {
