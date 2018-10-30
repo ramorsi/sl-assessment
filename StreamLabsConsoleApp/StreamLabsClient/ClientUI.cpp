@@ -52,7 +52,14 @@ void CarryOutFunctionHandler()
 
 }
 void GetObjectHandler()
-{}
+{
+	cout << "Please enter the id of the object you would like to retrieve" << endl;
+	int id;
+	cin >> id;
+	DummyClass* dummy = StreamLabsClient::GetInstance()->GetObj(id);
+	cout << dummy->ToString() << endl;
+	//TODO make printing pretty
+}
 
 int _tmain(int argc, TCHAR *argv[])
 {

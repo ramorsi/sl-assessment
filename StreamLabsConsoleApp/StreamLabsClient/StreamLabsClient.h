@@ -38,7 +38,7 @@ public:
 	string SendSimpleData(string data);
 	//TODO change this to use class name and then map to object
 	int CreateObj(int objCode=0);
-
+	DummyClass* GetObj(int id);
 
 /*	void IncrementInteger(int objId);
 	void DecrementInteger(int objId);

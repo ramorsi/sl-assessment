@@ -12,6 +12,13 @@ DummyClassClientImpl::DummyClassClientImpl()
 	delete request;
 	id = 0; //TODO change this to actual value
 }
+//TODO change this to be c++ syntax
+DummyClassClientImpl::DummyClassClientImpl(int id, int a, string str)
+{
+	this->id = id;
+	this->a = a;
+	this->str = str;
+}
 
 
 DummyClassClientImpl::~DummyClassClientImpl()
@@ -114,18 +121,24 @@ int DummyClassClientImpl::CreateObj()
 }
 
 
-/*
-TODO check where this should go
-json DummyClassClientImpl::GetObj()
+
+DummyClass* DummyClassClientImpl::GetObj(int id)
 {
 	json requestArgs;
 	requestArgs[OBJ_ID] = id;
 	Request* request = new Request(Action::GET_OBJECT, requestArgs);
-	StreamLabsClient::GetInstance()->SendRequest(request->ToString());
+	StreamLabsClient::GetInstance()->SendRequest(request);
 	//TODO refactor this, reply should be accessible here
-	StreamLabsClient::GetInstance()->ReceiveReply();
+	Response* response = StreamLabsClient::GetInstance()->ReceiveReply();
+	json responseData = json::parse(response->GetResponseData());
+	int objId = responseData[OBJ_ID];
+	int a = responseData[INTEGER];
+	string str = responseData[STRING];
+	DummyClass* dummy = new DummyClassClientImpl(objId, a , str);
 	delete request;
-	return json(); //TODO change this to actual value
+	delete response;
+	return dummy; //TODO change this to actual value
+
 }
-*/
+
 //TODO assumption just one type of objects

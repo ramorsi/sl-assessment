@@ -18,8 +18,8 @@ public:
 	int id;
 	string str;
 	static int counter;
-	
-	virtual int GetId() = 0;
+
+	virtual int GetId() { return id; }
 	virtual void IncrementInteger() = 0;
 	virtual void DecrementInteger() = 0;
 	virtual int GetInteger() = 0;
@@ -28,7 +28,12 @@ public:
 	virtual void ReverseString() = 0;
 	virtual string GetString() = 0;
 	virtual void SetString(string newString) = 0;
-	virtual string ToString() = 0;
-
+	virtual string ToString() {
+		json dummyJson;
+		dummyJson[INTEGER] = this->a;
+		dummyJson[STRING] = this->str;
+		dummyJson[OBJ_ID] = this->id;
+		return dummyJson.dump();
+	}
 };
 

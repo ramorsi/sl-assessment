@@ -6,9 +6,10 @@ class DummyClassClientImpl :public DummyClass
 {
 public:
 	DummyClassClientImpl();
+	DummyClassClientImpl(int id, int a, string str);
+
 	~DummyClassClientImpl();
 
-	int GetId() = 0; //Create obj
 	void IncrementInteger();
 	void DecrementInteger();
 	int GetInteger();
@@ -17,10 +18,10 @@ public:
 	void ReverseString();
 	string GetString();
 	void SetString(string newString);
-	string ToString() = 0;
+	//string ToString();
 	
 	static int CreateObj();
-
+	static DummyClass* GetObj(int id);
 //	json GetObj();
 
 };

@@ -16,7 +16,7 @@ public:
 	void ReverseString();
 	string GetString();
 	void SetString(string newString);
-	string ToString();
+	//string ToString();
 	//json GetObj();
 
 };
