@@ -14,9 +14,9 @@ class  __declspec(dllexport) DummyClass
 {
 public:
 
-	int a = 0;
+	int integerValue = 0;
 	int id;
-	string str;
+	string stringValue;
 	static int counter;
 
 	virtual int GetId() { return id; }
@@ -30,8 +30,8 @@ public:
 	virtual void SetString(string newString) = 0;
 	virtual string ToString() {
 		json dummyJson;
-		dummyJson[INTEGER] = this->a;
-		dummyJson[STRING] = this->str;
+		dummyJson[INTEGER] = this->integerValue;
+		dummyJson[STRING] = this->stringValue;
 		dummyJson[OBJ_ID] = this->id;
 		return dummyJson.dump();
 	}

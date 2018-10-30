@@ -19,6 +19,50 @@ void CreateObjectHandler()
 	int id = StreamLabsClient::GetInstance()->CreateObj();
 	cout << "A new object has been created with the id: " << id << endl;
 }
+void GetIntegerHandler(DummyClass* dummy)
+{
+	int integer = dummy->GetInteger();
+	cout << "The current value of integer is: " << integer << endl;
+}
+void SetIntegerHandler(DummyClass* dummy)
+{
+	cout << "Please enter the integer value you want to set" << endl;
+	int input;
+	cin >> input;
+	dummy->SetInteger(input);
+	//TODO this should be checked
+	cout << "Integer currently set to: " << input << endl;
+
+}
+void IncrementIntegerHandler(DummyClass* dummy)
+{
+	dummy->IncrementInteger();
+	cout << "Integer incremented to: " << dummy->integerValue;
+}
+
+void DecrementIntegerHandler(DummyClass* dummy)
+{
+	dummy->DecrementInteger();
+	cout << "Integer decremented to: " << dummy->integerValue;
+}
+void GetStringHandler(DummyClass* dummy)
+{
+	string str = dummy->GetString();
+	cout << "Current string value is: " << dummy->stringValue << endl;
+}
+void SetStringHandler(DummyClass* dummy)
+{
+	cout << "Enter new string" << endl;
+	string input;
+	cin >> input;
+	dummy->SetString(input);
+	cout << "String updated to: " << dummy->stringValue;
+}
+void ReverseStringHandler(DummyClass* dummy)
+{
+	dummy->ReverseString();
+	cout << "String updated to: " << dummy->stringValue;
+}
 void CarryOutFunctionHandler()
 {
 	int id;
@@ -27,6 +71,9 @@ void CarryOutFunctionHandler()
 	cout << "Please enter the id of the instace " << endl;
 	//TODO add check that it is a valid id
 	cin >> id;
+	DummyClass* dummy = StreamLabsClient::GetInstance()->GetObj(id);
+	if (dummy == NULL)
+		cout << "The id you entered is invalid" << endl;
 	cout << "Please enter the desired function ("
 		<< Action::GET_INTEGER << ": get integer, "
 		<< Action::SET_INTEGER << ": set integer, "
@@ -39,15 +86,15 @@ void CarryOutFunctionHandler()
 	cin >> secondaryAction;
 	switch (secondaryAction)
 	{
-		/*
-	case Action::GET_INTEGER: GetIntegerHandler(); break;
-	case  Action::SET_INTEGER: SetIntegerHandler(); break;
-	case Action::INCREMENT_INTEGER:IncrementIntegerHandler(); break;
-	case Action::DECREMENT_INTEGER: DecrementIntegerHandler(); break;
-	case  Action::GET_STRING: GetStringHandler(); break;
-	case  Action::SET_STRING:SetStringHandler(); break;
-			case Action::REVERSE_STRING << ": reverse string, "
-			*/
+
+	case Action::GET_INTEGER: GetIntegerHandler(dummy); break;
+	case  Action::SET_INTEGER: SetIntegerHandler(dummy); break;
+	case Action::INCREMENT_INTEGER:IncrementIntegerHandler(dummy); break;
+	case Action::DECREMENT_INTEGER: DecrementIntegerHandler(dummy); break;
+	case  Action::GET_STRING: GetStringHandler(dummy); break;
+	case  Action::SET_STRING:SetStringHandler(dummy); break;
+	case Action::REVERSE_STRING:ReverseStringHandler(dummy); break;
+
 	}
 
 }
@@ -65,7 +112,7 @@ int _tmain(int argc, TCHAR *argv[])
 {
 	StreamLabsClient::GetInstance()->ConnectPipe();
 
-	while(true)
+	while (true)
 	{
 		string primaryActionStr;
 		//TODO refactor this and set as enums
@@ -81,7 +128,7 @@ int _tmain(int argc, TCHAR *argv[])
 		case 3: CarryOutFunctionHandler(); break;
 		case 4: GetObjectHandler(); break;
 		}
-	} 
+	}
 	_getch();
 	delete StreamLabsClient::GetInstance();
 

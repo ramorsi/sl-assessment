@@ -16,8 +16,8 @@ DummyClassClientImpl::DummyClassClientImpl()
 DummyClassClientImpl::DummyClassClientImpl(int id, int a, string str)
 {
 	this->id = id;
-	this->a = a;
-	this->str = str;
+	this->integerValue = a;
+	this->stringValue = str;
 }
 
 
@@ -32,8 +32,11 @@ void DummyClassClientImpl::IncrementInteger()
 	Request* request = new Request(Action::INCREMENT_INTEGER, requestArgs);
 	StreamLabsClient::GetInstance()->SendRequest(request);
 	//TODO refactor this, reply should be accessible here
-	StreamLabsClient::GetInstance()->ReceiveReply();
+	Response* response = StreamLabsClient::GetInstance()->ReceiveReply();
+	json responseJson = json::parse(response->GetResponseData());
+	this->integerValue = responseJson[INTEGER];
 	delete request;
+	delete response;
 }
 
 void DummyClassClientImpl::DecrementInteger()
@@ -43,9 +46,11 @@ void DummyClassClientImpl::DecrementInteger()
 	Request* request = new Request(Action::DECREMENT_INTEGER, requestArgs);
 	StreamLabsClient::GetInstance()->SendRequest(request);
 	//TODO refactor this, reply should be accessible here
-	StreamLabsClient::GetInstance()->ReceiveReply();
+	Response* response = StreamLabsClient::GetInstance()->ReceiveReply();
+	json responseJson = json::parse(response->GetResponseData());
+	this->integerValue = responseJson[INTEGER];
 	delete request;
-
+	delete response;
 }
 
 int DummyClassClientImpl::GetInteger()
@@ -54,10 +59,13 @@ int DummyClassClientImpl::GetInteger()
 	requestArgs[OBJ_ID] = id;
 	Request* request = new Request(Action::GET_INTEGER, requestArgs);
 	StreamLabsClient::GetInstance()->SendRequest(request);
-	//TODO refactor this, reply should be accessible here
-	StreamLabsClient::GetInstance()->ReceiveReply();
+	Response* response = StreamLabsClient::GetInstance()->ReceiveReply();
+	json responseJson = json::parse(response->GetResponseData());
+	this->integerValue = responseJson[INTEGER];
+
 	delete request;
-	return 0; //FIX THIS, should be actual value returned!
+	delete response;
+	return this->integerValue; //FIX THIS, should be actual value returned!
 }
 
 void DummyClassClientImpl::SetInteger( int newValue)
@@ -67,8 +75,10 @@ void DummyClassClientImpl::SetInteger( int newValue)
 	requestArgs[INTEGER] = newValue;
 	Request* request = new Request(Action::SET_INTEGER, requestArgs);
 	StreamLabsClient::GetInstance()->SendRequest(request);
-	//TODO refactor this, reply should be accessible here
-	StreamLabsClient::GetInstance()->ReceiveReply();
+	Response* response = StreamLabsClient::GetInstance()->ReceiveReply();
+	json responseJson = json::parse(response->GetResponseData());
+	this->integerValue = responseJson[INTEGER];
+
 	delete request;
 }
 
@@ -78,9 +88,12 @@ void DummyClassClientImpl::ReverseString()
 	requestArgs[OBJ_ID] = id;
 	Request* request = new Request(Action::REVERSE_STRING, requestArgs);
 	StreamLabsClient::GetInstance()->SendRequest(request);
-	//TODO refactor this, reply should be accessible here
-	StreamLabsClient::GetInstance()->ReceiveReply();
+	Response* response = StreamLabsClient::GetInstance()->ReceiveReply();
+	json responseJson = json::parse(response->GetResponseData());
+	this->stringValue = responseJson[STRING];
+
 	delete request;
+	delete response;
 }
 
 string DummyClassClientImpl::GetString()
@@ -90,9 +103,13 @@ string DummyClassClientImpl::GetString()
 	Request* request = new Request(Action::GET_STRING, requestArgs);
 	StreamLabsClient::GetInstance()->SendRequest(request);
 	//TODO refactor this, reply should be accessible here
-	StreamLabsClient::GetInstance()->ReceiveReply();
+	Response* response = StreamLabsClient::GetInstance()->ReceiveReply();
+	json responseJson = json::parse(response->GetResponseData());
+	this->stringValue = responseJson[STRING];
+
 	delete request;
-	return ""; //TODO change this to actual value
+	delete response;
+	return this->stringValue;
 }
 
 void DummyClassClientImpl::SetString(string newString)
@@ -102,8 +119,10 @@ void DummyClassClientImpl::SetString(string newString)
 	requestArgs[STRING] = newString;
 	Request* request = new Request(Action::SET_STRING, requestArgs);
 	StreamLabsClient::GetInstance()->SendRequest(request);
-	//TODO refactor this, reply should be accessible here
-	StreamLabsClient::GetInstance()->ReceiveReply();
+	Response* response = StreamLabsClient::GetInstance()->ReceiveReply();
+	json responseJson = json::parse(response->GetResponseData());
+	this->stringValue = responseJson[STRING];
+	delete response;
 	delete request;
 }
 
@@ -137,8 +156,7 @@ DummyClass* DummyClassClientImpl::GetObj(int id)
 	DummyClass* dummy = new DummyClassClientImpl(objId, a , str);
 	delete request;
 	delete response;
-	return dummy; //TODO change this to actual value
-
+	return dummy; 
 }
 
 //TODO assumption just one type of objects

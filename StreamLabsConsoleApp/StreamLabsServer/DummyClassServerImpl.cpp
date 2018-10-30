@@ -19,35 +19,36 @@ int DummyClassServerImpl::GetId()
 
 void DummyClassServerImpl::IncrementInteger()
 {
-	a++;
+	integerValue++;
 }
 
 void DummyClassServerImpl::DecrementInteger()
 {
-	a--;
+	integerValue--;
 }
 
 int DummyClassServerImpl::GetInteger()
 {
-	return a;
+	return integerValue;
 }
 
 void DummyClassServerImpl::SetInteger(int newValue)
 {
-	a = newValue;
+	integerValue = newValue;
 }
 
 void DummyClassServerImpl::ReverseString()
 {
+	reverse(stringValue.begin(), stringValue.end());
 }
 
 string DummyClassServerImpl::GetString()
 {
-	return str;
+	return stringValue;
 }
 
 void DummyClassServerImpl::SetString(string newString)
 {
-	str = newString;
+	stringValue = newString;
 }
 
