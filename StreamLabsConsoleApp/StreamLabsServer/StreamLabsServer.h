@@ -13,7 +13,6 @@
 #include "Response.h"
 #include "DummyClassServerImpl.h"
 
-//TODO check automatic variable
 using json = nlohmann::json;
 using namespace std;
 

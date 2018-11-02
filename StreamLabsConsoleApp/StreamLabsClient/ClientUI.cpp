@@ -37,18 +37,18 @@ void SetIntegerHandler(DummyClass* dummy)
 void IncrementIntegerHandler(DummyClass* dummy)
 {
 	dummy->IncrementInteger();
-	cout << "Integer incremented to: " << dummy->integerValue;
+	cout << "Integer incremented to: " << dummy->integer_value_;
 }
 
 void DecrementIntegerHandler(DummyClass* dummy)
 {
 	dummy->DecrementInteger();
-	cout << "Integer decremented to: " << dummy->integerValue;
+	cout << "Integer decremented to: " << dummy->integer_value_;
 }
 void GetStringHandler(DummyClass* dummy)
 {
 	string str = dummy->GetString();
-	cout << "Current string value is: " << dummy->stringValue << endl;
+	cout << "Current string value is: " << dummy->string_value_ << endl;
 }
 void SetStringHandler(DummyClass* dummy)
 {
@@ -56,12 +56,12 @@ void SetStringHandler(DummyClass* dummy)
 	string input;
 	cin >> input;
 	dummy->SetString(input);
-	cout << "String updated to: " << dummy->stringValue;
+	cout << "String updated to: " << dummy->string_value_;
 }
 void ReverseStringHandler(DummyClass* dummy)
 {
 	dummy->ReverseString();
-	cout << "String updated to: " << dummy->stringValue;
+	cout << "String updated to: " << dummy->string_value_;
 }
 void CarryOutFunctionHandler()
 {

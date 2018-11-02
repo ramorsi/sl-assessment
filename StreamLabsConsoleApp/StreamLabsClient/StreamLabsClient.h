@@ -33,8 +33,9 @@ public:
 	}
 	int ConnectPipe();
 	//TODO change all pointers to dyn obj
-	int SendRequest(Request* request);
-	Response* ReceiveReply();
+	int SendRequest(Request request);
+	Response ReceiveReply();
+
 	string SendSimpleData(string data);
 	//TODO change this to use class name and then map to object
 	int CreateObj(int objCode=0);

@@ -6,9 +6,7 @@ class DummyClassClientImpl :public DummyClass
 {
 public:
 	DummyClassClientImpl();
-	DummyClassClientImpl(int id, int a, string str);
-
-	~DummyClassClientImpl();
+	DummyClassClientImpl(int id, int integer_value, string string_value);
 
 	void IncrementInteger();
 	void DecrementInteger();
