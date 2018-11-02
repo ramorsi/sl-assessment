@@ -10,11 +10,11 @@
 using namespace std;
 using json = nlohmann::json;
 
-enum Action {CREATE_DUMMY_OBJECT,INCREMENT_INTEGER, DECREMENT_INTEGER, GET_INTEGER, SET_INTEGER, REVERSE_STRING, GET_STRING, SET_STRING, GET_OBJECT, ECHO};
+enum Action {CREATE_DUMMY_OBJECT,INCREMENT_INTEGER, DECREMENT_INTEGER, GET_INTEGER, SET_INTEGER, REVERSE_STRING, GET_STRING, SET_STRING, GET_OBJECT, ECHO, RUN_FUNCTION};
 
 class  __declspec(dllexport) Request {
-	Action action;
-	json requestArgs;
+	Action action_;
+	json request_args_;
 
 public:
 	Request(Action action);

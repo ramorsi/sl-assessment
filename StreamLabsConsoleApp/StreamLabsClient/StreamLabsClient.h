@@ -32,7 +32,6 @@ public:
 		return instance;
 	}
 	int ConnectPipe();
-	//TODO change all pointers to dyn obj
 	int SendRequest(Request request);
 	Response ReceiveReply();
 
@@ -41,16 +40,5 @@ public:
 	int CreateObj(int objCode=0);
 	DummyClass* GetObj(int id);
 
-/*	void IncrementInteger(int objId);
-	void DecrementInteger(int objId);
-	int GetInteger(int objId);
-	void SetInteger(int objId, int newValue);
-
-	void ReverseString(int objId);
-	string GetString(int objId);
-	void SetString(int objId, string newString);
-	json GetObj(int id);
-		
-		*/
 	~StreamLabsClient();
 };

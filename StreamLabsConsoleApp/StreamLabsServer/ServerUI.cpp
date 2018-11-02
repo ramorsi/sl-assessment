@@ -12,7 +12,7 @@ using namespace std;
 
 int _tmain(VOID)
 {
-	StreamLabsServer* server = StreamLabsServer::GetInstance();
-	server->StartServer();
+	StreamLabsServer::GetInstance()->StartServer();
+	delete StreamLabsServer::GetInstance(); 
 	return 0;
 }

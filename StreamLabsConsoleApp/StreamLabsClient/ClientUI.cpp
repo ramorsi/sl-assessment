@@ -11,7 +11,10 @@ void SendSimpleDataHandler()
 {
 	cout << "Please enter the text you would like to send" << endl;
 	string input;
-	cin >> input;
+	cin.clear(); 
+	cin.ignore(INT_MAX, '\n');
+
+	getline(cin, input);
 	string result = StreamLabsClient::GetInstance()->SendSimpleData(input);
 	cout << result << endl;
 }
@@ -30,9 +33,16 @@ void SetIntegerHandler(DummyClass* dummy)
 	cout << "Please enter the integer value you want to set" << endl;
 	int input;
 	cin >> input;
+	while (cin.fail())
+	{
+		cout << "Please enter a valid integer" << endl;
+		cin.clear(); 
+		cin.ignore(INT_MAX, '\n');
+
+		cin >> input;
+	}
 	dummy->SetInteger(input);
-	//TODO this should be checked
-	cout << "Integer currently set to: " << input << endl;
+	cout << "Integer currently set to: " << dummy->integer_value_ << endl;
 
 }
 void IncrementIntegerHandler(DummyClass* dummy)
@@ -64,41 +74,6 @@ void ReverseStringHandler(DummyClass* dummy)
 	dummy->ReverseString();
 	cout << "String updated to: " << dummy->string_value_;
 }
-void CarryOutFunctionHandler()
-{
-	int id;
-	int secondaryAction;
-	enum Action { CREATE_DUMMY_OBJECT, INCREMENT_INTEGER, DECREMENT_INTEGER, GET_INTEGER, SET_INTEGER, REVERSE_STRING, GET_STRING, SET_STRING, GET_OBJECT };
-	cout << "Please enter the id of the instace " << endl;
-	//TODO add check that it is a valid id
-	cin >> id;
-	DummyClass* dummy = StreamLabsClient::GetInstance()->GetObj(id);
-	if (dummy == NULL)
-		cout << "The id you entered is invalid" << endl;
-	cout << "Please enter the desired function ("
-		<< Action::GET_INTEGER << ": get integer, "
-		<< Action::SET_INTEGER << ": set integer, "
-		<< Action::INCREMENT_INTEGER << ": increment integer, "
-		<< Action::DECREMENT_INTEGER << ": decrement integer, "
-		<< Action::GET_STRING << ": get string, "
-		<< Action::SET_STRING << ": set string, "
-		<< Action::REVERSE_STRING << ": reverse string, "
-		<< endl;
-	cin >> secondaryAction;
-	switch (secondaryAction)
-	{
-
-	case Action::GET_INTEGER: GetIntegerHandler(dummy); break;
-	case  Action::SET_INTEGER: SetIntegerHandler(dummy); break;
-	case Action::INCREMENT_INTEGER:IncrementIntegerHandler(dummy); break;
-	case Action::DECREMENT_INTEGER: DecrementIntegerHandler(dummy); break;
-	case  Action::GET_STRING: GetStringHandler(dummy); break;
-	case  Action::SET_STRING:SetStringHandler(dummy); break;
-	case Action::REVERSE_STRING:ReverseStringHandler(dummy); break;
-
-	}
-
-}
 void GetObjectHandler()
 {
 	cout << "Please enter the id of the object you would like to retrieve" << endl;
@@ -107,6 +82,49 @@ void GetObjectHandler()
 	DummyClass* dummy = StreamLabsClient::GetInstance()->GetObj(id);
 	cout << dummy->ToString() << endl;
 	//TODO make printing pretty
+}
+void CarryOutFunctionHandler()
+{
+	int id;
+	int secondaryAction;
+	enum Action { CREATE_DUMMY_OBJECT, INCREMENT_INTEGER, DECREMENT_INTEGER, GET_INTEGER, SET_INTEGER, REVERSE_STRING, GET_STRING, SET_STRING, GET_OBJECT };
+	cout << "Please enter the id of the instance " << endl;
+	//TODO add check that it is a valid id
+	cin >> id;
+
+	try {
+		DummyClass* dummy = StreamLabsClient::GetInstance()->GetObj(id);
+		cout << "Please enter the desired function ("
+			<< Action::GET_INTEGER << ": get integer, "
+			<< Action::SET_INTEGER << ": set integer, "
+			<< Action::INCREMENT_INTEGER << ": increment integer, "
+			<< Action::DECREMENT_INTEGER << ": decrement integer, "
+			<< Action::GET_STRING << ": get string, "
+			<< Action::SET_STRING << ": set string, "
+			<< Action::REVERSE_STRING << ": reverse string, "
+			<< endl;
+		cin >> secondaryAction;
+		switch (secondaryAction)
+		{
+
+		case Action::GET_INTEGER: GetIntegerHandler(dummy); break;
+		case  Action::SET_INTEGER: SetIntegerHandler(dummy); break;
+		case Action::INCREMENT_INTEGER:IncrementIntegerHandler(dummy); break;
+		case Action::DECREMENT_INTEGER: DecrementIntegerHandler(dummy); break;
+		case  Action::GET_STRING: GetStringHandler(dummy); break;
+		case  Action::SET_STRING:SetStringHandler(dummy); break;
+		case Action::REVERSE_STRING:ReverseStringHandler(dummy); break;
+
+		}
+
+	}
+	catch (StreamLabsException &e)
+	{
+		cout << e.what() << endl;
+		return;
+	}
+	cin.clear();
+	cin.ignore(INT_MAX, '\n');
 }
 
 int _tmain(int argc, TCHAR *argv[])
@@ -125,7 +143,7 @@ int _tmain(int argc, TCHAR *argv[])
 			int primaryAction = atoi(primaryActionStr.c_str());
 			switch (primaryAction)
 			{
-			case 1: SendSimpleDataHandler(); break; //TODO Echo function
+			case 1: SendSimpleDataHandler(); break; 
 			case 2: CreateObjectHandler(); break;
 			case 3: CarryOutFunctionHandler(); break;
 			case 4: GetObjectHandler(); break;
@@ -135,14 +153,18 @@ int _tmain(int argc, TCHAR *argv[])
 		catch (StreamLabsException &e)
 		{
 			cout << e.what() << endl;
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
+
 		}
 		catch (exception &ex)
 		{
 			cout << ex.what() << endl;
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
+
 		}
-		primaryActionStr.clear();
-		cin.clear();
-		cin.clear(); cin.ignore(INT_MAX, '\n');
+
 	}
 	_getch();
 	delete StreamLabsClient::GetInstance();

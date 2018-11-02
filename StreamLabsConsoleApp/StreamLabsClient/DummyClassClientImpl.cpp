@@ -14,7 +14,6 @@ void DummyClassClientImpl::IncrementInteger()
 	requestArgs[OBJ_ID] = id_;
 	std::unique_ptr<Request> request(new Request(Action::INCREMENT_INTEGER, requestArgs));
 	StreamLabsClient::GetInstance()->SendRequest(*request);
-	//TODO refactor this, reply should be accessible here
 	Response response = StreamLabsClient::GetInstance()->ReceiveReply();
 	json responseJson = json::parse(response.GetResponseData());
 	this->integer_value_ = responseJson[INTEGER_VALUE];
@@ -26,7 +25,6 @@ void DummyClassClientImpl::DecrementInteger()
 	requestArgs[OBJ_ID] = id_;
 	std::unique_ptr<Request> request(new Request(Action::DECREMENT_INTEGER, requestArgs));
 	StreamLabsClient::GetInstance()->SendRequest(*request);
-	//TODO refactor this, reply should be accessible here
 	Response response = StreamLabsClient::GetInstance()->ReceiveReply();
 	json responseJson = json::parse(response.GetResponseData());
 	this->integer_value_ = responseJson[INTEGER_VALUE];
@@ -72,7 +70,6 @@ string DummyClassClientImpl::GetString()
 	requestArgs[OBJ_ID] = id_;
 	std::unique_ptr<Request> request(new Request(Action::GET_STRING, requestArgs));
 	StreamLabsClient::GetInstance()->SendRequest(*request);
-	//TODO refactor this, reply should be accessible here
 	Response response = StreamLabsClient::GetInstance()->ReceiveReply();
 	json responseJson = json::parse(response.GetResponseData());
 	return responseJson[STRING_VALUE];

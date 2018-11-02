@@ -1,5 +1,4 @@
 #include "DummyClassServerImpl.h"
-//TODO remove this implementation, move it to server side and change DummyClassServerImpl to an interface!
 int DummyClassServerImpl::counter = 0;
 
 DummyClassServerImpl::DummyClassServerImpl()
@@ -7,7 +6,6 @@ DummyClassServerImpl::DummyClassServerImpl()
 	this->id_ = counter++;
 }
 
-//TODO add constructors using int, int and string, string
 DummyClassServerImpl::~DummyClassServerImpl()
 {
 }

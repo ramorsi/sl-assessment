@@ -20,11 +20,11 @@ using namespace std;
 class StreamLabsServer {
 	static StreamLabsServer* instance;
 	StreamLabsServer();
-	//TODO free map here
-	~StreamLabsServer();
 private:
 	map<int, DummyClass*> customObjects;
 public:
+		~StreamLabsServer();
+
 	static StreamLabsServer* GetInstance() {
 		if (!instance)
 			instance = new StreamLabsServer;
