@@ -45,9 +45,9 @@ public:
 
 
 	static DWORD WINAPI InstanceThread(LPVOID lpvParam);
-	static VOID GetAnswerToRequest(char* pchRequest,
-		char* pchReply,
-		LPDWORD pchBytes);
-
+	//static VOID GetAnswerToRequest(char* pchRequest,
+		//char* pchReply,
+//LPDWORD pchBytes);
+	static Response GetAnswerToRequest(char* pchRequest);
 };
 
