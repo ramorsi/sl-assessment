@@ -27,6 +27,9 @@
     <ClInclude Include="include\Response.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\StreamLabsExeption.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Request.cpp">

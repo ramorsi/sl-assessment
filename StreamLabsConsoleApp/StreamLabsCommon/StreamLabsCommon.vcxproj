@@ -156,6 +156,7 @@
     <ClInclude Include="include\DummyClass.h" />
     <ClInclude Include="include\Request.h" />
     <ClInclude Include="include\Response.h" />
+    <ClInclude Include="include\StreamLabsExeption.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Request.cpp" />

@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <tchar.h>
 #include <iostream>
+#include <limits>
 #include "StreamLabsClient.h"
 #include "Request.h"
 
@@ -120,14 +121,28 @@ int _tmain(int argc, TCHAR *argv[])
 		cin >> primaryActionStr;
 		if (primaryActionStr == "q")
 			break;
-		int primaryAction = atoi(primaryActionStr.c_str());
-		switch (primaryAction)
-		{
-		case 1: SendSimpleDataHandler(); break; //TODO Echo function
-		case 2: CreateObjectHandler(); break;
-		case 3: CarryOutFunctionHandler(); break;
-		case 4: GetObjectHandler(); break;
+		try {
+			int primaryAction = atoi(primaryActionStr.c_str());
+			switch (primaryAction)
+			{
+			case 1: SendSimpleDataHandler(); break; //TODO Echo function
+			case 2: CreateObjectHandler(); break;
+			case 3: CarryOutFunctionHandler(); break;
+			case 4: GetObjectHandler(); break;
+			default:cout << "You have an entered an invalid action" << endl;
+			}
 		}
+		catch (StreamLabsException &e)
+		{
+			cout << e.what() << endl;
+		}
+		catch (exception &ex)
+		{
+			cout << ex.what() << endl;
+		}
+		primaryActionStr.clear();
+		cin.clear();
+		cin.clear(); cin.ignore(INT_MAX, '\n');
 	}
 	_getch();
 	delete StreamLabsClient::GetInstance();

@@ -12,6 +12,7 @@
 #include "Request.h"
 #include "Response.h"
 #include "DummyClassServerImpl.h"
+#include "StreamLabsExeption.h"
 
 using json = nlohmann::json;
 using namespace std;
@@ -19,6 +20,7 @@ using namespace std;
 class StreamLabsServer {
 	static StreamLabsServer* instance;
 	StreamLabsServer();
+	//TODO free map here
 	~StreamLabsServer();
 private:
 	map<int, DummyClass*> customObjects;
@@ -30,16 +32,16 @@ public:
 	}
 	int StartServer();
 	DummyClass* GetObj(int id);
-	Response* CreateDummyObjectHandler();
-	Response* DecrementIntegerHandler(json requestArgs);
-	Response* GetIntegerHandler(json requestArgs);
-	Response* GetStringHandler(json requestArgs);
-	Response* IncrementIntegerHandler(json requestArgs); 
-	Response* ReverseStringHandler(json requestArgs); 
-	Response* SetIntegerHandler(json requestArgs); 
-	Response* SetStringHandler(json requestArgs); 
-	Response* GetObjHandler(json requestArgs);
-	Response* EchoHandler(json requestArgs);
+	Response CreateDummyObjectHandler();
+	Response DecrementIntegerHandler(json requestArgs);
+	Response GetIntegerHandler(json requestArgs);
+	Response GetStringHandler(json requestArgs);
+	Response IncrementIntegerHandler(json requestArgs); 
+	Response ReverseStringHandler(json requestArgs); 
+	Response SetIntegerHandler(json requestArgs); 
+	Response SetStringHandler(json requestArgs); 
+	Response GetObjHandler(json requestArgs);
+	Response EchoHandler(json requestArgs);
 
 
 	static DWORD WINAPI InstanceThread(LPVOID lpvParam);
