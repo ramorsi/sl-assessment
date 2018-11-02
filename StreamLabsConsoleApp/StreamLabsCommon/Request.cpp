@@ -10,7 +10,22 @@ Request::Request(Action action)
 {
 	this->action_ = action;
 }
+Request::Request(string jsonStr)
+{
+	json responseJson = json::parse(jsonStr);
+	this->action_ = responseJson[ACTION];
+	this->request_args_ = responseJson[REQUEST_ARGS];
+}
+
 Request::~Request() {}
+int Request::GetAction()
+{
+	return action_;
+}
+json Request::GetRequestArgs()
+{
+	return request_args_;
+}
 string Request::ToString()
 {
 	json requestStr;

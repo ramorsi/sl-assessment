@@ -19,7 +19,11 @@ class  __declspec(dllexport) Request {
 public:
 	Request(Action action);
 	Request(Action action, json requestArgs);
+	Request(string jsonStr);
+
 	~Request();
+	int GetAction();
+	json GetRequestArgs();
 	string ToString();
 
 };

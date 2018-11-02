@@ -1,3 +1,4 @@
+//Dummy interface implemented by both the client and server
 #ifdef DUMMYCLASS_EXPORTS  
 #define DUMMMYCLASS_API __declspec(dllexport)   
 #else  
