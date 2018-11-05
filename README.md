@@ -1,6 +1,7 @@
 # StreamBase 
 
 A client/server application to manage data on a Windows system. Client and Server connect via namedpipes. The app supports an echo feature, where the client can send text to the server and receive it back. The app also allows clients to create objects server side, retrieve them and perfom functions on them.
+A multithreaded design is emeployed, where the server listens for incoming connections. Once a client is connected, a new thread is started to handle all requests and replies to that client i.e. a thread is created per client connections.
 
 ## General Code Structure
 
