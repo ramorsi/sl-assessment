@@ -4,21 +4,27 @@ A client/server application to manage data on a Windows system. Client and Serve
 
 ## General Code Structure
 
-The code comprises three VS projects; server, client, common. 
+The code comprises three VS projects; StreamLabsServer, StreamLabsClient, StreamLabsCommon. 
 
-### Server
+### StreamLabsServer
 The server project holds all code related to the server (starting the server, recieving and logging requests, sending replies,...etc). The server also implements
 the DummyClass which is the object upon which the clients perform functions. 
 
-### Client
+### StreamLabsClient
 The client project holds all code related to the server (connecting the server, sending requests and receiving replies,...etc)
 
-### Common
+### StreamLabsCommon
 The common project holds all code that is common to both the client and server. 
-#### Request and Reply, these are two classes that are used to format requests and replies. Requests and replies are expected to 
+#### DummyClass
+Is an interface implemented by both the client and server. The server implementation holds the actual logic of the functions. The client
+implementation holds requests sent to the server to actually perform the functions.
+#### Request and Reply
+These are two classes that are used to format requests and replies. Requests and replies are expected to 
 be formatted as json strings. Each function dictates specific parameters.
-#### Constants.h holds constant parameters accessible by the client and server such as buffer size and parameter names
-#### StreamLabsException.h is a custom exception class
+#### Constants.h
+Holds constant parameters accessible by the client and server such as buffer size and parameter names
+#### StreamLabsException.h
+Is a custom exception class
  
 ## Limitations
 - Maximum number of objects created should not exceed int value
@@ -41,4 +47,4 @@ The executables for both the client and server can be found in the binaries fold
 
 ## Authors
 
-* **Rana Morsi** - *Initial work* - [StreamBase](https://github.com/ramorsi/sl-assessment)
+* **Rana Morsi** - [StreamBase](https://github.com/ramorsi/sl-assessment)
