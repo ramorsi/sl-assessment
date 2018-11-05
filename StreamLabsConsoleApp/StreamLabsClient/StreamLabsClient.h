@@ -14,9 +14,10 @@
 #include "Request.h"
 #include "Response.h"
 #include "DummyClassClientImpl.h"
+
 using json = nlohmann::json;
 using namespace std;
-#define BUFSIZE 512
+
 class __declspec(dllexport) StreamLabsClient
 {
 	static StreamLabsClient* instance;
@@ -24,7 +25,7 @@ class __declspec(dllexport) StreamLabsClient
 
 private:
 	HANDLE hPipe;
-	LPCTSTR lpszPipename; //Assuming each client will connect to only one server
+	LPCWSTR lpszPipename; //Assuming each client will connect to only one server
 public:
 	static StreamLabsClient* GetInstance() {
 		if (!instance)
@@ -36,7 +37,6 @@ public:
 	Response ReceiveReply();
 
 	string SendSimpleData(string data);
-	//TODO change this to use class name and then map to object
 	int CreateObj(int objCode=0);
 	DummyClass* GetObj(int id);
 

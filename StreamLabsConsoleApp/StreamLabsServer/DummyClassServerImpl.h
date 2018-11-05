@@ -4,7 +4,6 @@ class DummyClassServerImpl : public DummyClass
 {
 public:
 	DummyClassServerImpl();
-	//TODO add constructors using int, int and string, string
 	~DummyClassServerImpl();
 
 	int GetId();
@@ -16,7 +15,6 @@ public:
 	void ReverseString();
 	string GetString();
 	void SetString(string newString);
-	//string ToString();
-	//json GetObj();
-
+	string ToString();
+	
 };

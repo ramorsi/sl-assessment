@@ -12,15 +12,22 @@ Response::Response(StatusCode statusCode, string responseStr)
 }
 Response::Response(StreamLabsException e)
 {
-	this->status_code_ = StatusCode::MY_ERROR;
+	this->status_code_ = e.exception_id_;
 	this->response_str = e.what();
 }
-//TODO Exception handling
+
 Response::Response(string jsonStr)
 {
-	json responseJson = json::parse(jsonStr);
-	this->status_code_ = responseJson[STATUS_CODE];
-	this->response_str = responseJson[RESPONSE];
+	try {
+		json responseJson = json::parse(jsonStr);
+		this->status_code_ = responseJson[STATUS_CODE];
+		this->response_str = responseJson[RESPONSE];
+
+	}
+	catch (...)
+	{
+		throw StreamLabsException(StatusCode::INVALID_RESPONSE_FORMAT);
+	}
 }
 
 Response::~Response()

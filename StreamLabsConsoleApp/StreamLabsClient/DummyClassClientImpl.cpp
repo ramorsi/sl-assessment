@@ -86,7 +86,15 @@ void DummyClassClientImpl::SetString(string newString)
 	json responseJson = json::parse(response.GetResponseData());
 	this->string_value_ = responseJson[STRING_VALUE];
 }
-
+string DummyClassClientImpl::ToString()
+{
+	json requestArgs;
+	requestArgs[OBJ_ID] = id_;
+	std::unique_ptr<Request> request(new Request(Action::TO_STRING, requestArgs));
+	StreamLabsClient::GetInstance()->SendRequest(*request);
+	Response response = StreamLabsClient::GetInstance()->ReceiveReply();
+	return response.GetResponseData();
+}
 int DummyClassClientImpl::CreateObj()
 {
 	json requestArgs;
@@ -113,5 +121,3 @@ DummyClass* DummyClassClientImpl::GetObj(int id)
 	DummyClass* dummy = new DummyClassClientImpl(objId, a, str);
 	return dummy;
 }
-
-//TODO assumption just one type of objects

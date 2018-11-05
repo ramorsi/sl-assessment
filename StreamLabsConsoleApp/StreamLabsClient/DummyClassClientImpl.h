@@ -16,11 +16,10 @@ public:
 	void ReverseString();
 	string GetString();
 	void SetString(string newString);
-	//string ToString();
+	string ToString();
 	
 	static int CreateObj();
 	static DummyClass* GetObj(int id);
-//	json GetObj();
 
 };
 

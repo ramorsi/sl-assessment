@@ -1,3 +1,4 @@
+//Main client class. Responsible for all i/o.
 #include <windows.h> 
 #include <stdio.h>
 #include <conio.h>
@@ -48,13 +49,13 @@ void SetIntegerHandler(DummyClass* dummy)
 void IncrementIntegerHandler(DummyClass* dummy)
 {
 	dummy->IncrementInteger();
-	cout << "Integer incremented to: " << dummy->integer_value_;
+	cout << "Integer incremented to: " << dummy->integer_value_ << endl;
 }
 
 void DecrementIntegerHandler(DummyClass* dummy)
 {
 	dummy->DecrementInteger();
-	cout << "Integer decremented to: " << dummy->integer_value_;
+	cout << "Integer decremented to: " << dummy->integer_value_ << endl;
 }
 void GetStringHandler(DummyClass* dummy)
 {
@@ -67,12 +68,12 @@ void SetStringHandler(DummyClass* dummy)
 	string input;
 	cin >> input;
 	dummy->SetString(input);
-	cout << "String updated to: " << dummy->string_value_;
+	cout << "String updated to: " << dummy->string_value_ << endl;
 }
 void ReverseStringHandler(DummyClass* dummy)
 {
 	dummy->ReverseString();
-	cout << "String updated to: " << dummy->string_value_;
+	cout << "String updated to: " << dummy->string_value_ << endl;
 }
 void GetObjectHandler()
 {
@@ -81,13 +82,14 @@ void GetObjectHandler()
 	cin >> id;
 	DummyClass* dummy = StreamLabsClient::GetInstance()->GetObj(id);
 	cout << dummy->ToString() << endl;
-	//TODO make printing pretty
 }
 void CarryOutFunctionHandler()
 {
+	cin.clear();
+	cin.ignore(INT_MAX, '\n');
+
 	int id;
 	int secondaryAction;
-	enum Action { CREATE_DUMMY_OBJECT, INCREMENT_INTEGER, DECREMENT_INTEGER, GET_INTEGER, SET_INTEGER, REVERSE_STRING, GET_STRING, SET_STRING, GET_OBJECT };
 	cout << "Please enter the id of the instance " << endl;
 	//TODO add check that it is a valid id
 	cin >> id;
@@ -121,7 +123,6 @@ void CarryOutFunctionHandler()
 	catch (StreamLabsException &e)
 	{
 		cout << e.what() << endl;
-		return;
 	}
 	cin.clear();
 	cin.ignore(INT_MAX, '\n');
@@ -133,14 +134,10 @@ int _tmain(int argc, TCHAR *argv[])
 
 	while (true)
 	{
-		string primaryActionStr;
-		//TODO refactor this and set as enums
+		int primaryAction;
 		cout << "Please select an action (1: Send simple data, 2: Create a new object, 3: Execute function on particular instance, 4: Retrieve an instance)" << endl;
-		cin >> primaryActionStr;
-		if (primaryActionStr == "q")
-			break;
+		cin >> primaryAction;
 		try {
-			int primaryAction = atoi(primaryActionStr.c_str());
 			switch (primaryAction)
 			{
 			case 1: SendSimpleDataHandler(); break; 
