@@ -10,7 +10,7 @@
 
 void SendSimpleDataHandler()
 {
-	cout << "Please enter the text you would like to send" << endl;
+	cout << "\nPlease enter the text you would like to send" << endl;
 	string input;
 	cin.clear(); 
 	cin.ignore(INT_MAX, '\n');
@@ -22,62 +22,62 @@ void SendSimpleDataHandler()
 void CreateObjectHandler()
 {
 	int id = StreamLabsClient::GetInstance()->CreateObj();
-	cout << "A new object has been created with the id: " << id << endl;
+	cout << "\nA new object has been created with the id: " << id << endl;
 }
 void GetIntegerHandler(DummyClass* dummy)
 {
 	int integer = dummy->GetInteger();
-	cout << "The current value of integer is: " << integer << endl;
+	cout << "\nThe current value of integer is: " << integer << endl;
 }
 void SetIntegerHandler(DummyClass* dummy)
 {
-	cout << "Please enter the integer value you want to set" << endl;
+	cout << "\nPlease enter the integer value you want to set" << endl;
 	int input;
 	cin >> input;
 	while (cin.fail())
 	{
-		cout << "Please enter a valid integer" << endl;
+		cout << "\nPlease enter a valid integer" << endl;
 		cin.clear(); 
 		cin.ignore(INT_MAX, '\n');
 
 		cin >> input;
 	}
 	dummy->SetInteger(input);
-	cout << "Integer currently set to: " << dummy->integer_value_ << endl;
+	cout << "\nInteger currently set to: " << dummy->integer_value_ << endl;
 
 }
 void IncrementIntegerHandler(DummyClass* dummy)
 {
 	dummy->IncrementInteger();
-	cout << "Integer incremented to: " << dummy->integer_value_ << endl;
+	cout << "\nInteger incremented to: " << dummy->integer_value_ << endl;
 }
 
 void DecrementIntegerHandler(DummyClass* dummy)
 {
 	dummy->DecrementInteger();
-	cout << "Integer decremented to: " << dummy->integer_value_ << endl;
+	cout << "\nInteger decremented to: " << dummy->integer_value_ << endl;
 }
 void GetStringHandler(DummyClass* dummy)
 {
 	string str = dummy->GetString();
-	cout << "Current string value is: " << dummy->string_value_ << endl;
+	cout << "\nCurrent string value is: " << dummy->string_value_ << endl;
 }
 void SetStringHandler(DummyClass* dummy)
 {
-	cout << "Enter new string" << endl;
+	cout << "\nEnter new string" << endl;
 	string input;
 	cin >> input;
 	dummy->SetString(input);
-	cout << "String updated to: " << dummy->string_value_ << endl;
+	cout << "\nString updated to: " << dummy->string_value_ << endl;
 }
 void ReverseStringHandler(DummyClass* dummy)
 {
 	dummy->ReverseString();
-	cout << "String updated to: " << dummy->string_value_ << endl;
+	cout << "\nString updated to: " << dummy->string_value_ << endl;
 }
 void GetObjectHandler()
 {
-	cout << "Please enter the id of the object you would like to retrieve" << endl;
+	cout << "\nPlease enter the id of the object you would like to retrieve" << endl;
 	int id;
 	cin >> id;
 	DummyClass* dummy = StreamLabsClient::GetInstance()->GetObj(id);
@@ -90,13 +90,13 @@ void CarryOutFunctionHandler()
 
 	int id;
 	int secondaryAction;
-	cout << "Please enter the id of the instance " << endl;
+	cout << "\nPlease enter the id of the instance " << endl;
 	//TODO add check that it is a valid id
 	cin >> id;
 
 	try {
 		DummyClass* dummy = StreamLabsClient::GetInstance()->GetObj(id);
-		cout << "Please enter the desired function ("
+		cout << "\nPlease enter the desired function ("
 			<< Action::GET_INTEGER << ": get integer, "
 			<< Action::SET_INTEGER << ": set integer, "
 			<< Action::INCREMENT_INTEGER << ": increment integer, "
@@ -135,7 +135,7 @@ int _tmain(int argc, TCHAR *argv[])
 	while (true)
 	{
 		int primaryAction;
-		cout << "Please select an action (1: Send simple data, 2: Create a new object, 3: Execute function on particular instance, 4: Retrieve an instance)" << endl;
+		cout << "\nPlease select an action (1: Send simple data, 2: Create a new object, 3: Execute function on particular instance, 4: Retrieve an instance)" << endl;
 		cin >> primaryAction;
 		try {
 			switch (primaryAction)
